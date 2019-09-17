@@ -20,7 +20,8 @@ namespace Figure
                 Console.WriteLine("*************MENU*************");
                 Console.WriteLine("1. Create a curved trapezoid");
                 Console.WriteLine("2. Side length calculation");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Square of a curved trapezoid");
+                Console.WriteLine("4. Exit");
                 Console.WriteLine("******************************");
                 Console.Write("Enter menu item: ");
                 menu = Convert.ToInt32(Console.ReadLine());
@@ -38,10 +39,15 @@ namespace Figure
                         {
                             curvedTrapezoid.SideLengthCalculation(initialX, finalX);
                         }
-                        
+                        break;
+                    case 3:
+                        if (curvedTrapezoid.ExistenceCheck(initialX, finalX))
+                        {
+                            curvedTrapezoid.FigureSquare(initialX, finalX);
+                        }
                         break;
                 }
-            } while (menu != 3);
+            } while (menu != 4);
         }
     }
 }
