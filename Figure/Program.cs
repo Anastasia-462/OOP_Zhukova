@@ -11,16 +11,17 @@ namespace Figure
     {
         static void Main(string[] args)
         {
-            double initialX;
-            double finalX;
+            double initialX = 0;
+            double finalX = 0;
             int menu;
             CurvedTrapezoid curvedTrapezoid = new CurvedTrapezoid(0,0);
             do
             {
                 Console.WriteLine("*************MENU*************");
                 Console.WriteLine("1. Create a curved trapezoid");
-                Console.WriteLine("2. Exit");
-                Console.WriteLine("*****************************");
+                Console.WriteLine("2. Side length calculation");
+                Console.WriteLine("3. Exit");
+                Console.WriteLine("******************************");
                 Console.Write("Enter menu item: ");
                 menu = Convert.ToInt32(Console.ReadLine());
                 switch (menu)
@@ -32,8 +33,15 @@ namespace Figure
                         finalX = Convert.ToDouble(Console.ReadLine());
                         curvedTrapezoid.ExistenceCheck(initialX, finalX);
                         break;
+                    case 2:
+                        if (curvedTrapezoid.ExistenceCheck(initialX, finalX))
+                        {
+                            curvedTrapezoid.SideLengthCalculation(initialX, finalX);
+                        }
+                        
+                        break;
                 }
-            } while (menu != 2);
+            } while (menu != 3);
         }
     }
 }

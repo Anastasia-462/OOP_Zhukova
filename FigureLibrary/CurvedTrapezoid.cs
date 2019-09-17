@@ -15,16 +15,35 @@ namespace FigureLibrary
             this.XInitial = XInitial;
             this.XFinal = XFinal;
         }
-        public void ExistenceCheck(double XInitial, double XFinal)
+        public bool ExistenceCheck(double XInitial, double XFinal)
         {
-            if (((XInitial < 0 ) && (XFinal > 0)) || ((XInitial > 0) && (XFinal < 0)) || ((XInitial == 0) && (XFinal == 0)))
+            if (((XInitial < 0 ) && (XFinal > 0)) || ((XInitial > 0) && (XFinal < 0)) || (XInitial == XFinal))
             {
                 Console.WriteLine("A figure cannot exist.");
+                return false;
             }
             else
             {
                 Console.WriteLine("Data entered is coorect.");
+                return true;
             }
+        }
+        public void SideLengthCalculation(double XInitial, double XFinal)
+        {
+            double X;
+            double curve;
+            if (XInitial > XFinal)
+            {
+                X = XInitial;
+                XInitial = XFinal;
+                XFinal = X;
+            }
+            //double y1 = Math.Pow(XInitial, 2);
+            //double y2 = Math.Pow(XFinal, 2);
+            //double zel = XFinal - XInitial;
+            curve = 0.5 * XFinal * Math.Sqrt(1 + 4 * Math.Pow(XFinal, 2)) + 0.25 * Math.Log(Math.Abs(2 * XFinal + Math.Sqrt(1 + 4 * Math.Pow(XFinal, 2)))) - 0.5 * XInitial * Math.Sqrt(1 + 4 * Math.Pow(XInitial, 2)) - 0.25 * Math.Log(Math.Abs(2 * XInitial + Math.Sqrt(1 + 4 * Math.Pow(XInitial, 2))));
+            Console.WriteLine("X-axis length: {0}; x-axis length from above: {1}", XFinal - XInitial, curve);
+            Console.WriteLine("Y-axis length on the right: {0}; y-axis on the left: {1}", Math.Pow(XInitial, 2), Math.Pow(XFinal, 2));
         }
 
     }
