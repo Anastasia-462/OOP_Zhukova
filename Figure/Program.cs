@@ -1,9 +1,5 @@
 ﻿using System;
 using FigureLibrary;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Figure
 {
@@ -13,6 +9,7 @@ namespace Figure
         {
             double initialX = 0;
             double finalX = 0;
+            //Check condition.
             int menu;
             CurvedTrapezoid curvedTrapezoid = new CurvedTrapezoid(0,0);
             do
@@ -32,6 +29,8 @@ namespace Figure
                 {
                     case 1:
                         Console.Write("Enter coordinate initial X: ");
+                        //TryParse converts a string to a number if the entered string doesn't
+                        //contain numbers and asks to re-enter.
                         Double.TryParse(Console.ReadLine(), out initialX);
                         Console.Write("Enter coordinate final X: ");
                         Double.TryParse(Console.ReadLine(), out finalX);
