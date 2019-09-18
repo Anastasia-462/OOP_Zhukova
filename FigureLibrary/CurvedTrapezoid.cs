@@ -72,5 +72,36 @@ namespace FigureLibrary
             S = Math.Pow(XFinal, 3) / 3 - Math.Pow(XInitial, 3) / 3;
             Console.WriteLine("Square of a curved trapezoid: {0}", S);
         }
+        public void PointOwnershipCheck(double XInitial, double XFinal)
+        {
+            double X;
+            double Y;
+            double YInitial = Math.Pow(XInitial, 2);
+            double YFinal = Math.Pow(XFinal, 2);
+            Console.WriteLine("Enter X coordinate: ");
+            while (!Double.TryParse(Console.ReadLine(), out X))
+            {
+                Console.WriteLine("Invalid input!");
+                Console.WriteLine("Enter X coordinate: ");
+            }
+            Console.WriteLine("Enter Y coordinate: ");
+            while (!Double.TryParse(Console.ReadLine(), out Y))
+            {
+                Console.WriteLine("Invalid input!");
+                Console.WriteLine("Enter Y coordinate: ");
+            }
+            if (((X == XInitial) && (Y <= YInitial)) || ((X == XFinal) && (Y <= YFinal)) || (Y - 0.5 * Math.Pow(X, 2) == 0))
+            {
+                Console.WriteLine("Lies on the border of the figure.");
+            }
+            else if ((X > XInitial) && (X < XFinal) && (Y > 0) && (Y < YFinal) && (Y - 0.5 * Math.Pow(X, 2) < 0))
+            {
+                Console.WriteLine("Belongs to a given figure.");
+            }
+            else
+            {
+                Console.WriteLine("Does not belong to a given figure.");
+            }
+        }
     }
 }
